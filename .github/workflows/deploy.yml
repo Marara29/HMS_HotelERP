@@ -28,4 +28,11 @@ jobs:
             sudo supervisorctl update
             sudo supervisorctl restart erp-api
 
+            cd ../frontend
+            npm install --legacy-peer-deps
+            npm run build
+
+            sudo supervisorctl restart hms-frontend
+
             sudo supervisorctl status erp-api
+            sudo supervisorctl status hms-frontend
